@@ -12,7 +12,7 @@ jobs:
  
     - name: compiling and testing lab 1
       working-directory: ./first_lab
-      run: make Makefile all
+      run: make 
       
     - name: valgrind
       run: |
