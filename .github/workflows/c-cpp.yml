@@ -15,14 +15,3 @@ jobs:
     - name: compiling and testing lab 1
       working-directory: ./lab_1
       run: make Makefile all
-  build2:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
