@@ -12,4 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Run Makefile
-        run: make all
+         run: |
+          for d in */ ; do
+          cd "$d"
+          make
+          cd ..
+          done
