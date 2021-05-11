@@ -5,17 +5,15 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
+    - name: Fetch
+      uses: actions/checkout@master
     - uses: actions/checkout@v2
-
- 
-    - name: compiling and testing lab 1
-      working-directory: |
-       $ cd lab_1
-
-      run: make 
-      
+    - name: compile and test
+      run: |
+        for d in */ ; do
+        make -C "%d"
+        done
     - name: valgrind
       run: |
         sudo apt-get install -y valgrind
