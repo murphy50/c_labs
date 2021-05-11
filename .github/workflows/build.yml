@@ -9,9 +9,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: make
-      run: make
-
+ 
+    - name: compiling and testing lab 1
+      working-directory: ./first_lab
+      run: make Makefile all
+      
     - name: valgrind
       run: |
         sudo apt-get install -y valgrind
