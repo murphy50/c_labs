@@ -8,10 +8,11 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: compiling and testing lab 1
       working-directory: ./lab_1
-      run: make Makefile all
+      run: make 
+      
