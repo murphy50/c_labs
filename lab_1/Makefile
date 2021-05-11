@@ -8,4 +8,4 @@ build_tests:
 			
 			g++ -o tests tests.c computing.c 
 run_tests:
-			tests
+			./tests
