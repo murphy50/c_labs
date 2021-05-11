@@ -10,12 +10,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: make
-      run: |
-        for d in */ ; do
-        cd "$d"
-        make
-        cd ..
-        done
+      run: make
 
     - name: valgrind
       run: |
