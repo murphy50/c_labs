@@ -1,0 +1,5 @@
+*/.vs
+*.exe
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
