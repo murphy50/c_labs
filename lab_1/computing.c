@@ -6,6 +6,9 @@ void swap(int *a, int *b) {
 }
 
 size_t len(int n) {
+  if(n==0){
+      return 1;
+  }
   size_t count = 0;
   while (n != 0) {
     count++;

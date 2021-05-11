@@ -1,5 +1,6 @@
 #ifndef SWAP_H
 #define SWAP_H
+#include <cstddef>
 void swap(int *a, int *b);
 size_t len(int n);
 // Заполнение массива цифрами
