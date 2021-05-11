@@ -11,7 +11,9 @@ jobs:
 
  
     - name: compiling and testing lab 1
-      working-directory:  cd /lab_1
+      working-directory: |
+       $ cd lab_1
+
       run: make 
       
     - name: valgrind
