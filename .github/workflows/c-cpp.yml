@@ -1,0 +1,17 @@
+name: built-actions
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: compiling and testing lab 1
+      working-directory: ./lab_1
+      run: make Makefile all
