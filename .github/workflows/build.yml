@@ -1,5 +1,5 @@
 name: C Workflow
-
+ 
 on: [push, pull_request]
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
 
  
     - name: compiling and testing lab 1
-      working-directory: ./first_lab
+      working-directory:  cd /lab_1
       run: make 
       
     - name: valgrind
