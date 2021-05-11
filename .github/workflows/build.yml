@@ -1,20 +1,18 @@
-name: built-actions
+name: C Workflow
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@master
-      - name: Run Makefile
-        run: |
-          for d in */ ; do
-          cd "$d"
-          make
-          cd ..
-          done
+    - uses: actions/checkout@v1
+
+    - name: make
+      run: make
+
+    - name: valgrind
+      run: |
+        sudo apt-get install -y valgrind
+        valgrind -v --leak-check=full --show-leak-kinds=all ./bin
