@@ -8,10 +8,8 @@ jobs:
     steps:
     
     - name: Print Hello Message
-      run: echo "hello world"
-      
-    - name: List current folder 
-      run: ls -la 
+      run: echo "hello"
+
       
     - name: Git clone repos
       uses: actions/checkout@v1
@@ -24,7 +22,7 @@ jobs:
         ls -la
         make
         ls -la 
-    - name: valg
+    - name: valgrind
       run: |
         ls -la 
         sudo apt-get install -y valgrind
@@ -33,30 +31,10 @@ jobs:
         cd lab_1
         ls -la
         chmod a+x ./main.c
-        
         valgrind -v --leak-check=full --show-leak-kinds=all ./main.c
-        chmod a+x ./main
+
         chmod a+x ./computing.c
-        valgrind ./main
         valgrind ./computing.c
-        valgrind ./test.c
-    - name: test
-      run: make 
-    - name: valgrind
-      run: |
-        ls -la 
-        cd lab_1
-        sudo apt-get install -y valgrind
-        sudo apt install valgrind
-        
-        valgrind -v --leak-check=full --show-leak-kinds=all ./main
- 
-    - name: Fetch
-      uses: actions/checkout@master
-    - uses: actions/checkout@v2
-    - name: compile and test
-      run: | 
-        for d in */ ; do
-        make -C "%d"
-        done
+
   
+
