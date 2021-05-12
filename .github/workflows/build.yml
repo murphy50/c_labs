@@ -31,8 +31,8 @@ jobs:
         ls -la
         cd lab_1
         ls -la
-        chmod a+x ./main.c
+        chmod a+x ./main
        
-        valgrind -v --leak-check=full --show-reachable=yes ./main.c
+        valgrind -v --leak-check=full --show-reachable=yes ./main
   
 
