@@ -27,10 +27,12 @@ jobs:
     - name: valg
       run: |
         ls -la 
+        sudo apt-get install -y valgrind
         sudo apt install valgrind
-        ls -la 
+        ls -la
         cd lab_1
-        valgrind ./main.c
+        valgrind -v --leak-check=full --show-leak-kinds=all ./main.c
+        valgrind ./main
         valgrind ./computing.c
         valgrind ./test.c
     - name: test
