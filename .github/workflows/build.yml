@@ -29,6 +29,7 @@ jobs:
         ls -la 
         sudo apt install valgrind
         ls -la 
+        cd lab_1
         valgrind ./main.c
         valgrind ./computing.c
         valgrind ./test.c
@@ -37,6 +38,7 @@ jobs:
     - name: valgrind
       run: |
         ls -la 
+        cd lab_1
         sudo apt-get install -y valgrind
         sudo apt install valgrind
         valgrind -v --leak-check=full --show-leak-kinds=all ./main
