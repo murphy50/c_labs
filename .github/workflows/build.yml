@@ -32,7 +32,7 @@ jobs:
         cd lab_1
         ls -la
         chmod a+x ./main.c
-        valgrind -v --leak-check=full --show-leak-kinds=all ./main.c
-
+       
+        valgrind -v --leak-check=full --show-reachable=yes ./main.c
   
 
