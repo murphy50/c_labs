@@ -35,8 +35,8 @@ jobs:
        
         valgrind  ./main
         ls -la 
-        chmod a+x ./test
-        valgrind ./test
+        chmod a+x ./tests
+        valgrind ./tests
         
     
           
