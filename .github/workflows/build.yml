@@ -31,6 +31,7 @@ jobs:
         sudo apt install valgrind
         ls -la
         cd lab_1
+        ls -la
         valgrind -v --leak-check=full --show-leak-kinds=all ./main.c
         valgrind ./main
         valgrind ./computing.c
