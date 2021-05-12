@@ -26,14 +26,16 @@ jobs:
     - name: valg
       run: |
         sudo apt install valgrind
-        valgrind ./main.out
+        valgrind ./main.c
+        valgrind ./computing.c
+        valgrind ./test.c
     - name: test
       run: make 
     - name: valgrind
       run: |
         sudo apt-get install -y valgrind
         sudo apt install valgrind
-        valgrind -v --leak-check=full --show-leak-kinds=all ./main.out
+        valgrind -v --leak-check=full --show-leak-kinds=all ./main
  
     - name: Fetch
       uses: actions/checkout@master
