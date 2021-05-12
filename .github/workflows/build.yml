@@ -25,7 +25,7 @@ jobs:
     - name: valg
       run: |
         sudo apt install valgrind
-        valgrind --leak-check=full main.c
+        valgrind --leak-check=full ./main
     - name: test
       run: make 
     - name: valgrind
