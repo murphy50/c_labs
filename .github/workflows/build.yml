@@ -25,6 +25,7 @@ jobs:
     - name: valgrind
       run: |
         ls -la 
+        sudo apt-get -qy install lcov
         sudo apt-get install -y valgrind
         sudo apt install valgrind
         ls -la
@@ -32,9 +33,6 @@ jobs:
         ls -la
         chmod a+x ./main.c
         valgrind -v --leak-check=full --show-leak-kinds=all ./main.c
-
-        chmod a+x ./computing.c
-        valgrind ./computing.c
 
   
 
