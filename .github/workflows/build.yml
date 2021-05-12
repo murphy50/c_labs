@@ -33,6 +33,13 @@ jobs:
         ls -la
         chmod a+x ./main
        
-        valgrind -v --leak-check=full --show-reachable=yes ./main
+        valgrind -v --leak-check=full  ./main
+        
+        valgrind /.main
+        
+        chmod a+x ./main.c
+        valgrind -v --leak-check=full  ./main.c
+          
+        
   
 
