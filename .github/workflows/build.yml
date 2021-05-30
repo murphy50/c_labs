@@ -26,6 +26,6 @@ jobs:
         make
         ls -la 
     
-    - name: clang
-      uses: muxee/clang-tidy-action@master
+    - name: C++ code linter (clang-tidy and cppcheck)
+      uses: smay1613/cpp-linter-action@0.0.2
 
