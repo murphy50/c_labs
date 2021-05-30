@@ -39,6 +39,8 @@ jobs:
         valgrind ./tests
         ls -la 
         sudo apt-get install -y splint
+        ls -la 
+        cd lab_1
         splint main.c
 
     
