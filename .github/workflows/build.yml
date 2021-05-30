@@ -1,11 +1,34 @@
-name: c-linter
 
+
+
+name: C Workflow
+ 
 on: [push, pull_request]
+
 jobs:
-  c-linter:
-    name: c-linter
+ build:
     runs-on: ubuntu-latest
     steps:
-      - name: c-linter
-        uses: ArtificialAmateur/clang-tidy-action@master
+    
+    - name: Print Hello Message
+      run: echo "hello"
+
+      
+    - name: Git clone repos
+      uses: actions/checkout@v1
+      
+    - name: List current folder 
+      run: ls -la 
+    - name: List current folder 
+      run: |
+        cd lab_1 
+        ls -la
+        make
+        ls -la 
+    
+    - name: clang
+      uses: muxee/clang-tidy-action@master
+
+    - name: c-linter
+      uses: ArtificialAmateur/clang-tidy-action@master
  
