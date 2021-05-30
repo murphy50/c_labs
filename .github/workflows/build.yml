@@ -29,6 +29,3 @@ jobs:
     - name: clang
       uses: muxee/clang-tidy-action@master
 
-    - name: c-linter
-      uses: ArtificialAmateur/clang-tidy-action@master
- 
