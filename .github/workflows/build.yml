@@ -37,7 +37,10 @@ jobs:
         ls -la 
         chmod a+x ./tests
         valgrind ./tests
-        
+        ls -la 
+        sudo apt-get install -y splint
+        splint main.c
+
     
           
         
