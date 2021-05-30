@@ -1,6 +1,6 @@
 name: c-linter
 
-on: [pull_request]
+on: [push, pull_request]
 jobs:
   c-linter:
     name: c-linter
@@ -8,5 +8,4 @@ jobs:
     steps:
       - name: c-linter
         uses: ArtificialAmateur/clang-tidy-action@master
-    env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
