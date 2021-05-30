@@ -1,50 +1,12 @@
-name: C Workflow
- 
-on: [push, pull_request]
+name: c-linter
 
+on: [pull_request]
 jobs:
-  build:
+  c-linter:
+    name: c-linter
     runs-on: ubuntu-latest
     steps:
-    
-    - name: Print Hello Message
-      run: echo "hello"
-
-      
-    - name: Git clone repos
-      uses: actions/checkout@v1
-      
-    - name: List current folder 
-      run: ls -la 
-    - name: List current folder 
-      run: |
-        cd lab_1 
-        ls -la
-        make
-        ls -la 
-    - name: valgrind
-      run: |
-        ls -la 
-        sudo apt-get -qy install lcov
-        sudo apt-get install -y valgrind
-        sudo apt install valgrind
-        ls -la
-        cd lab_1
-        ls -la
-        chmod a+x ./main
-       
-        valgrind  ./main
-        ls -la 
-        chmod a+x ./tests
-        valgrind ./tests
-        ls -la 
-        sudo apt-get install -y splint
-        ls -la 
-        cd lab_1
-        splint main.c
-
-    
-          
-        
-  
-
+      - name: c-linter
+        uses: ArtificialAmateur/clang-tidy-action@master
+    env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
