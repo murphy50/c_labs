@@ -1,5 +1,5 @@
-
 #include <iostream>
+#include "Stack.h"
 Stack::Stack() : top(nullptr) {}
 Stack::~Stack() {
 	while (!empty()) {
