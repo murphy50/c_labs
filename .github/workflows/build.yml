@@ -1,20 +1,41 @@
-name: built-actions
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+name: C Workflow
+ 
+on: [push, pull_request]
 
 jobs:
-  build:
+ build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Run Makefile
-        run: |
-          for d in */ ; do
-          cd "$d"
-          make
-          cd ..
-          done
+    
+    - name: Print Hello Message
+      run: echo "hello"
+
+      
+    - name: Git clone repos
+      uses: actions/checkout@v1
+      
+    - name: List current folder 
+      run: ls -la 
+    - name: List current folder 
+      run: |
+        cd lab_1 
+        ls -la
+        make
+        ls -la 
+    - name: valgrind
+      run: |
+        ls -la 
+        sudo apt-get -qy install lcov
+        sudo apt-get install -y valgrind
+        sudo apt install valgrind
+        ls -la
+        cd lab_1
+        ls -la
+        chmod a+x ./main
+       
+        valgrind  ./main
+        ls -la 
+        chmod a+x ./tests
+        valgrind ./tests
+        ls -la 
+     
