@@ -40,6 +40,6 @@ jobs:
         cd lab_3
         ls -la
         chmod a+x ./tests
-        valgrind ./tests
+        valgrind-s ./tests
         
         ls -la 
