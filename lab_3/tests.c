@@ -7,44 +7,44 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable : 4996)
 
-// void TestXgaps(int*** a) {
-//     Node* list_x = Xgaps(a, 2);
-//     Node* tmp = list_x;
-//     assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 0 && tmp->coordinates.x == 1);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 0 && tmp->coordinates.x == 1);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
-//     DeleteList(list_x);
-// }
+void TestXgaps(int*** a) {
+    Node* list_x = Xgaps(a, 2);
+    Node* tmp = list_x;
+    assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 0 && tmp->coordinates.x == 1);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 0 && tmp->coordinates.x == 1);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
+    DeleteList(list_x);
+}
 
-// void TestYgaps(int*** a) {
-//     Node* list_y = Ygaps(a, 2);
-//     Node* tmp = list_y;
-//     assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 1 && tmp->coordinates.x == 0);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 0);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
-//     DeleteList(list_y);
-// }
+void TestYgaps(int*** a) {
+    Node* list_y = Ygaps(a, 2);
+    Node* tmp = list_y;
+    assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 1 && tmp->coordinates.x == 0);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 0 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 0);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
+    DeleteList(list_y);
+}
 
-// void TestZgaps(int*** a) {
-//     Node* list_z = Zgaps(a, 2);
-//     Node* tmp = list_z;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 0 && tmp->coordinates.x == 0);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 0);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 0 && tmp->coordinates.x == 1);
-//     tmp = tmp->next;
-//     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
-//     DeleteList(list_z);
-// }
+void TestZgaps(int*** a) {
+    Node* list_z = Zgaps(a, 2);
+    Node* tmp = list_z;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 0 && tmp->coordinates.x == 0);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 0);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 0 && tmp->coordinates.x == 1);
+    tmp = tmp->next;
+    assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
+    DeleteList(list_z);
+}
 
 
 int main() {
@@ -64,9 +64,9 @@ int main() {
             }
         }
     }
-    // TestXgaps(a);
-    // TestYgaps(a);
-    // TestZgaps(a);
+    TestXgaps(a);
+    TestYgaps(a);
+    TestZgaps(a);
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -75,5 +75,5 @@ int main() {
         free(a[i]);
     }
     free(a);
-    return 0;
+
 }

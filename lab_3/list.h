@@ -8,10 +8,7 @@ typedef struct Coordinates {
 	int z;
 	int y;
 	int x;
-	int z2;
-	int y2;
-	int x2;
-}Coordinates;
+} Coordinates;
 
 typedef struct Node {
 	struct Node* next;
@@ -20,14 +17,21 @@ typedef struct Node {
 } Node;
 
 void PushBack(Node** head,Node** tail, Coordinates* coord) {
+	if (*head == NULL) {
+		Node* elem = (Node*)malloc(sizeof(Node));
+		elem->coordinates = *coord;
+		elem->next = NULL;
+		elem->prev = *tail;
+		*tail = elem;
+		*head = elem;
+		return;
+	}
 	Node* elem = (Node*)malloc(sizeof(Node));
 	elem->coordinates = *coord;
 	elem->next = NULL;
 	elem->prev = *tail;
+	(*tail)->next= elem;
 	*tail = elem;
-	if (*head == NULL) {
-		*head = elem;
-	}
 	return;
 }
 
