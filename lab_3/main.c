@@ -82,6 +82,7 @@ int main() {
         for (int j = 0; j < n; j++) {
             free(a[i][j]);
         }
+        free(a[i]);
     }
     free(a);
 
