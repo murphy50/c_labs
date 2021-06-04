@@ -19,7 +19,7 @@ jobs:
         ls -la 
         cd ..
         cd lab_3
-        gcc -o tests tests.c
+        gcc -o tests -ggdb3 tests.c
     - name: valgrind
       run: |
         ls -la 
@@ -40,6 +40,10 @@ jobs:
         cd lab_3
         ls -la
         chmod a+x ./tests
-        valgrind-s ./tests
+        valgrind --leak-check=full \
+         --show-leak-kinds=all \
+         --track-origins=yes \
+         --verbose \
+         ./tests
         
         ls -la 
