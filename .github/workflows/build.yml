@@ -19,7 +19,7 @@ jobs:
         ls -la 
         cd ..
         cd lab_3
-        gcc -o tests tests.c
+        gcc -o tests main.c
     - name: valgrind
       run: |
         ls -la 
