@@ -7,21 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Print Hello Message
-      run: echo "hello"
-
-      
     - name: Git clone repos
       uses: actions/checkout@v1
       
-    - name: List current folder 
-      run: ls -la 
+ 
     - name: List current folder 
       run: |
         cd lab_1 
         ls -la
         make
         ls -la 
+        cd ..
+        cd lab_3
+        gcc -o main main.c
     - name: valgrind
       run: |
         ls -la 
@@ -38,4 +36,11 @@ jobs:
         chmod a+x ./tests
         valgrind ./tests
         ls -la 
-     
+        cd ..
+        cd lab_3
+        ls -la
+        chmod a+x ./main
+        valgrind ./main
+        chmod a+x ./main.c
+        valgrind ./main.c
+        ls -la 
