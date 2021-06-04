@@ -38,10 +38,7 @@ jobs:
         ls -la 
         cd ..
         cd lab_3
-         ls -la
-        cd lab_1
         ls -la
-        
         chmod a+x ./tests
         valgrind ./tests
         ls -la 
