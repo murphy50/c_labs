@@ -19,7 +19,7 @@ jobs:
         ls -la 
         cd ..
         cd lab_3
-        gcc -o main main.c
+        gcc -o tests tests.c
     - name: valgrind
       run: |
         ls -la 
@@ -39,8 +39,7 @@ jobs:
         cd ..
         cd lab_3
         ls -la
-        chmod a+x ./main
-        valgrind ./main
-        chmod a+x ./main.c
-        valgrind ./main.c
+        chmod a+x ./tests
+        valgrind ./tests
+        
         ls -la 
