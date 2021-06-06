@@ -34,13 +34,6 @@ jobs:
         valgrind  ./main
         valgrind ./tests
         cd .. 
-        cd second_task
-        make
-        chmod a+x ./main
-        chmod a+x ./tests
-        valgrind  ./main
-        valgrind ./tests
-        cd ..
         cd ..
         cd lab_3
         chmod a+x ./main
