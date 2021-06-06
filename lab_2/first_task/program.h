@@ -145,14 +145,9 @@ void Repeater()
   {
     Start();
   }
-  else if (ans == 2)
+  else 
   {
     exit(0);
-  }
-  else
-  {
-    printf("Enter the correct digit\n");
-    Repeater();
   }
 }
 
