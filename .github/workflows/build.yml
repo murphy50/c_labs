@@ -37,9 +37,7 @@ jobs:
         cd ..
         cd lab_3
         make
-        chmod a+x ./main
-      
-        valgrind ./main 1
+        
         
         cd ..
         cd lab_4 
