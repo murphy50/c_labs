@@ -39,8 +39,8 @@ jobs:
         make
         chmod a+x ./main
         chmod a+x ./tests
-        valgrind  ./main
-        valgrind ./tests
+        valgrind --tool = memcheck  ./main
+        valgrind --tool = memcheck ./tests
         cd ..
         cd lab_4 
         cd first_task(4.1)
