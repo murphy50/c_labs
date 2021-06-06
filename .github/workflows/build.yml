@@ -37,8 +37,10 @@ jobs:
         cd ..
         cd lab_3
         make
-        
-        
+        chmod a+x ./main
+        chmod a+x ./tests
+        valgrind  ./main
+        valgrind ./tests 
         cd ..
         cd lab_4 
         cd 'first_task(4.1)'
