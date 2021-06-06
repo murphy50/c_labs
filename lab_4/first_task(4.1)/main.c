@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-#include "isPeriodic.h"
+#include "IsPeriodic.h"
 
 int main()
 {

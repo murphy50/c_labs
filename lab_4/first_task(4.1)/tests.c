@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "isPeriodic.h"
+#include "IsPeriodic.h"
 
 void test_isPeriodic(){
     assert(IsPeriodic("123123")==1);
