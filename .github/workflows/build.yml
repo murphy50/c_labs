@@ -10,40 +10,74 @@ jobs:
     - name: Git clone repos
       uses: actions/checkout@v1
       
- 
-    - name: List current folder 
-      run: |
-        cd lab_1 
-        ls -la
-        make
-        ls -la 
-        cd ..
-        cd lab_3
-        gcc -o tests -ggdb3 tests.c
     - name: valgrind
       run: |
         ls -la 
         sudo apt-get -qy install lcov
         sudo apt-get install -y valgrind
         sudo apt install valgrind
-        ls -la
-        cd lab_1
-        ls -la
+        
+    - name: List current folder 
+      run: |
+        cd lab_1 
+        make
         chmod a+x ./main
-       
-        valgrind  ./main
-        ls -la 
         chmod a+x ./tests
+        valgrind  ./main
         valgrind ./tests
-        ls -la 
+        cd ..
+        cd lab_2
+        cd first_task
+        make 
+        chmod a+x ./main
+        chmod a+x ./tests
+        valgrind  ./main
+        valgrind ./tests
+        cd .. 
+        cd second_task
+        make
+        chmod a+x ./main
+        chmod a+x ./tests
+        valgrind  ./main
+        valgrind ./tests
+        cd ..
         cd ..
         cd lab_3
-        ls -la
+        chmod a+x ./main
         chmod a+x ./tests
-        valgrind --leak-check=full \
-         --show-leak-kinds=all \
-         --track-origins=yes \
-         --verbose \
-         ./tests
+        valgrind  ./main
+        valgrind ./tests
+        make 
+        cd ..
+        cd lab_4 
+        cd first_task(4.1)
+        chmod a+x ./main
+        chmod a+x ./tests
+        valgrind  ./main
+        valgrind ./tests
+        make 
+        cd .. 
+        cd second_task
+        make
+        chmod a+x ./main
+        chmod a+x ./tests
+        valgrind  ./main
+        valgrind ./tests
+        cd ..
+        cd ..
+        cd lab_5 
+        make
+        chmod a+x ./main
+        chmod a+x ./tests
+        valgrind  ./main
+        valgrind ./tests
+        cd ..
+        cd lab_6 
+        make
+        chmod a+x ./main
+        chmod a+x ./tests
+        valgrind  ./main
+        valgrind ./tests
+        cd ..
         
-        ls -la 
+    
