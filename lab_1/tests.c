@@ -1,21 +1,17 @@
-#include "computing.h"
 #include <assert.h>
 #include <stdio.h>
-
-
 #include <stdlib.h>
+#include "utilities.h"
 
-
-
-
-void test_len(){
-    assert(len(10)==2);
-    assert(len(1)==1);
-    assert(len(12345)==5);
-    assert(len(-12)==2);
-    assert(len(0)==1);
+void TestLen(){
+    assert(Len(10)==2);
+    assert(Len(1)==1);
+    assert(Len(12345)==5);
+    assert(Len(-12)==2);
+    assert(Len(0)==1);
 }
+
 int main(){
-    test_len();
+    TestLen();
     return 0;
 }

@@ -1,15 +1,17 @@
-#include <stdio.h>
-void swap(int *a, int *b) {
+#ifndef UTILITIES_H
+#define UTILITIES_H
+
+void Swap(int *a, int *b) {
   int tmp = *a;
   *a = *b;
   *b = tmp;
 }
 
-size_t len(int n) {
+int Len(int n) {
   if(n==0){
       return 1;
   }
-  size_t count = 0;
+  int count = 0;
   while (n != 0) {
     count++;
     n /= 10;
@@ -18,8 +20,8 @@ size_t len(int n) {
 }
 
 // Заполнение массива цифрами
-void enter_digits_to_mas(int* n, int number) {
-  for (size_t i = 0; number != 0; ++i)
+void EnterDigitsToArray(int* n, int number) {
+  for (int i = 0; number != 0; ++i)
   {
     n[i] = number % 10;
     number /= 10;
@@ -27,9 +29,9 @@ void enter_digits_to_mas(int* n, int number) {
 }
 
 // Расчет ширины поля(отступ)
-void print_margin(const size_t margin) {
+void PrintMargin(int margin) {
   for (int i = 0; i < margin; ++i) {
     printf(" ");
   }
 }
-
+#endif 
