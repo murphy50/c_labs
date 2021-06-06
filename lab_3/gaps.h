@@ -7,7 +7,6 @@
 Node* Xgaps(int*** a, int n) {
     Node* head = NULL;
     Node* tail = NULL;
-    int i = 0;
     for (int z = 0; z < n; z++) {
         for (int y = 0; y < n; y++) {
             for (int x = 0; x < n; x++) {
@@ -27,7 +26,6 @@ Node* Xgaps(int*** a, int n) {
 Node* Ygaps(int*** a, int n) {
     Node* head = NULL;
     Node* tail = NULL;
-    int i = 0;
     for (int z = 0; z < n; z++) {
         for (int x = 0; x < n; x++) {
             for (int y = 0; y < n; y++) {
@@ -47,7 +45,6 @@ Node* Ygaps(int*** a, int n) {
 Node* Zgaps(int*** a, int n) {
     Node* head = NULL;
     Node* tail = NULL;
-    int i = 0;
     for (int x = 0; x < n; x++) {
         for (int y = 0; y < n; y++) {
             for (int z = 0; z < n; z++) {

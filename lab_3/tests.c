@@ -4,8 +4,6 @@
 #include "gaps.h"
 #include "list.h"
 #include <assert.h>
-#define _CRT_SECURE_NO_WARNINGS
-#pragma warning(disable : 4996)
 
 void TestXgaps(int*** a) {
     Node* list_x = Xgaps(a, 2);
@@ -45,7 +43,6 @@ void TestZgaps(int*** a) {
     assert(tmp->coordinates.z == 1 && tmp->coordinates.y == 1 && tmp->coordinates.x == 1);
     DeleteList(list_z);
 }
-
 
 int main() {
     int n = 2;

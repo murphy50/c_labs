@@ -1,11 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <malloc.h>
 #include <time.h>
 #include "gaps.h"
 #include "list.h"
-#define _CRT_SECURE_NO_WARNINGS
-#pragma warning(disable : 4996)
 
 int main() {
     srand((unsigned)time(NULL));
