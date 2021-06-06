@@ -1,5 +1,6 @@
 #ifndef CALCULATION_H
 #define CALCULATION_H
+#include <math.h>
 int Calculation(double arg, double inaccuracy)
 {
   double left_value = sin(arg);
