@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Stack.h"
 #include "CircleList.h"
-
 int main() {
 	Stack s;
 	s.push('c');

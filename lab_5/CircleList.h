@@ -1,6 +1,5 @@
 #ifndef CIRCLE_LIST_H
 #define CIRCLE_LIST_H
-#include"Stack.h"
 class CircleList : Stack {
 private:
 	struct ListNode {

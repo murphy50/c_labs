@@ -1,6 +1,6 @@
 #include <iostream>
+#include "Stack.h"
 #include "CircleList.h"
-#include"Stack.h"
 void CircleList::insert(Stack* stk, int pos) {
 	if (start == nullptr) {
 		ListNode* elem = new ListNode(stk);

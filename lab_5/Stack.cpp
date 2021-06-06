@@ -1,4 +1,4 @@
-#include <iostream>
+#include "iostream"
 #include "Stack.h"
 Stack::Stack() : top(nullptr) {}
 Stack::~Stack() {
@@ -42,7 +42,6 @@ void Stack::sorted_insert(char val) {// рекурсиваная вставка
 	pop();
 	sorted_insert(val);
 	push(tmp);
-
 }
 
 void Stack::sort() {
@@ -53,7 +52,6 @@ void Stack::sort() {
 		sorted_insert(tmp);
 	}
 }
-
 
 void Stack::print() {
 	StackNode* tmp = top;
