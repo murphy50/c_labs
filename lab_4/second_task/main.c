@@ -6,8 +6,9 @@
 
 int main() {
     FILE* file;
-    if (file = fopen("input.txt", "rb")) == NULL){
-		printf("Uh oh, SomeText.txt could not be opened for reading!\n");
+    file = fopen("input.txt", "rb");
+    if(file == NULL){
+		printf("Uh oh, input.txt could not be opened for reading!\n");
 		exit(1);
 	}
     printf("%lf\n", AverageLetters(file));
