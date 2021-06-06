@@ -1,8 +1,6 @@
 #ifndef PROG_H
 #define PROG_H
-
-#define _CRT_SECURE_NO_WARNINGS
-#pragma warning(disable : 4996)
+#define MAX 2147483647
 // структура тарифов
 struct Parameters
 {
@@ -17,7 +15,7 @@ const struct Parameters ComfortS = {120, 60, 1, "Comfort S"};
 const struct Parameters ComfortM = {300, 120, 10, "Comfort M"};
 const struct Parameters ComfortL = {500, 300, 25, "Comfort L"};
 const struct Parameters ComfortXL = {1000, 1000, 50, "Comfort Xl"};
-const struct Parameters NoLimit = {2000, 500, INT_MAX, "No Limit"};
+const struct Parameters NoLimit = {2000, 500, MAX, "No Limit"};
 
 struct Parameters user_parameters;
 // создание массива тарифов, для удобной работы с ними
@@ -138,7 +136,7 @@ void Repeater()
 {
   printf("Would you like to continue?: yes:1/no:2 \n");
   int ans;
-  if (scanf("%d", &ans))
+  if (!scanf("%d", &ans))
   {
     printf("error\n");
     exit(1);
