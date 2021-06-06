@@ -31,31 +31,23 @@ jobs:
         make 
         chmod a+x ./main
         chmod a+x ./tests
-        valgrind  ./main
+        valgrind  ./main 3 2 
         valgrind ./tests
         cd .. 
-        cd second_task
+        cd ..
+        cd lab_3
+        make
+        
+        
+        cd ..
+        cd lab_4 
+        cd 'first_task(4.1)'
+        ls -la
         make
         chmod a+x ./main
         chmod a+x ./tests
         valgrind  ./main
-        valgrind ./tests
-        cd ..
-        cd ..
-        cd lab_3
-        chmod a+x ./main
-        chmod a+x ./tests
-        valgrind  ./main
-        valgrind ./tests
-        make 
-        cd ..
-        cd lab_4 
-        cd first_task(4.1)
-        chmod a+x ./main
-        chmod a+x ./tests
-        valgrind  ./main
-        valgrind ./tests
-        make 
+        valgrind ./tests 
         cd .. 
         cd second_task
         make
