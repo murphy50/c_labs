@@ -24,20 +24,20 @@ struct Parameters user_parameters;
 struct Parameters tariffs[5] = {ComfortS, ComfortM, ComfortL, ComfortXL, NoLimit};
 
 // ввод пользователем номера желаемой функции
-void input();
+void Input();
 // расчет подходящих таривоф
-char *calculation(struct Parameters usr_parameters);
+char *Calculation(struct Parameters usr_parameters);
 // вывод существующих тарифов с описанием
-void information();
+void Information();
 // контактная информация компании
-void contacts();
+void Contacts();
 // пользовательское меню выбора
-void menu();
-void repeater();
-void start();
+void Menu();
+void Repeater();
+void Start();
 
 // ввод пользователем номера желаемой функции
-void input()
+void Input()
 {
   printf("Enter the tariff parameters:\n");
   printf("Number of minutes inside the network\n");
@@ -49,11 +49,11 @@ void input()
 }
 
 // расчет подходящих таривоф
-char *calculation(struct Parameters usr_parameters)
+char *Calculation(struct Parameters usr_parameters)
 {
   if (usr_parameters.internet == 0 && usr_parameters.minutes_in_the_network == 0 && usr_parameters.minutes_outside_the_network == 0)
   {
-    input();
+    Input();
   }
   for (size_t i = 0; i < 5; ++i)
   {
@@ -66,7 +66,7 @@ char *calculation(struct Parameters usr_parameters)
 }
 
 // вывод существующих тарифов с описанием
-void information()
+void Information()
 {
   for (size_t i = 0; i < 5; ++i)
   {
@@ -78,7 +78,7 @@ void information()
 }
 
 // контактная информация компании
-void contacts()
+void Contacts()
 {
   printf("\ncontact information:\n\n"
          "150 single contact center number (free call from all networks of operators in Belarus)\n"
@@ -91,7 +91,7 @@ void contacts()
 }
 
 // пользовательское меню выбора
-void menu()
+void Menu()
 {
   printf("To select an operation, enter a number:\n\n"
          "1: Input parameters\n"
@@ -101,29 +101,29 @@ void menu()
          "5: Exit the program\n");
 }
 
-void start()
+void Start()
 {
-  menu();
+  Menu();
   int value;
   if (!scanf("%d", &value))
   {
     printf("error\n");
-    return 1;
+    exit(1);
   };
   switch (value)
   {
   case 1:
-    input();
+    Input();
     break;
   case 2:
-    printf("%s", calculation(user_parameters));
+    printf("%s", Calculation(user_parameters));
     printf("\n");
     break;
   case 3:
-    information();
+    Information();
     break;
   case 4:
-    contacts();
+    Contacts();
     break;
   case 5:
     exit(1);
@@ -131,21 +131,21 @@ void start()
   default:
     printf("Option not selected\n");
   }
-  repeater();
+  Repeater();
 }
 
-void repeater()
+void Repeater()
 {
   printf("Would you like to continue?: yes:1/no:2 \n");
   int ans;
   if (scanf("%d", &ans))
   {
     printf("error\n");
-    return 1;
+    exit(1);
   }
   if (ans == 1)
   {
-    start();
+    Start();
   }
   else if (ans == 2)
   {
@@ -154,7 +154,7 @@ void repeater()
   else
   {
     printf("Enter the correct digit\n");
-    repeater();
+    Repeater();
   }
 }
 

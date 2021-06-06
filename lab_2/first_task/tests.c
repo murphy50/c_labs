@@ -11,10 +11,10 @@
 
 void test_calculation()
 {
-    assert(strcmp(calculation(test1),tariffs[0].name)==0);
-    assert(strcmp(calculation(test4),tariffs[2].name)==0);
-    assert(strcmp(calculation(test2),tariffs[3].name)==0);
-    assert(strcmp(calculation(test3),tariffs[3].name)==0);
+    assert(strcmp(Calculation(test1),tariffs[0].name)==0);
+    assert(strcmp(Calculation(test4),tariffs[2].name)==0);
+    assert(strcmp(Calculation(test2),tariffs[3].name)==0);
+    assert(strcmp(Calculation(test3),tariffs[3].name)==0);
     return;
 }
 int main(){

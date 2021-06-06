@@ -7,6 +7,6 @@
 
 int main()
 {
-  start();
+  Start();
   return   0;
 }
