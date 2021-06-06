@@ -41,7 +41,8 @@ jobs:
         
         cd ..
         cd lab_4 
-        cd first_task(4.1)
+        cd 'first_task(4.1)'
+        ls -la
         make
         chmod a+x ./main
         chmod a+x ./tests
