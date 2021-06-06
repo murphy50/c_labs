@@ -2,6 +2,7 @@
 #include<cassert>
 #include"Stack.cpp"
 #include"CircleList.cpp"
+
 void test_stack_push(Stack& st_test) {
     st_test.push('k');
     assert(st_test.top->value == 'k');
@@ -28,6 +29,9 @@ void test_list_merge_stacks(CircleList& ls_test) {
     assert(ls_test.get_size() == 1);
 
 }
+void test(CircleList* ls_test,int a ){г
+    assert(ls_test->top->value==1);
+}
 int main() {
     Stack st;
     st.push('a');
@@ -42,5 +46,6 @@ int main() {
     test_list_get_size(ls);
     test_list_erase(ls);
     ls.insert(&st2, 1);
-    test_list_merge_stacks(ls);
+    test(&ls);
+    test_list_merge_stacks(ls,5 );
 }

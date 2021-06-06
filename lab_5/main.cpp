@@ -1,5 +1,5 @@
 #include <iostream>
-#include"Stack.h"
+#include "Stack.h"
 #include "CircleList.h"
 
 int main() {
