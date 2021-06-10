@@ -1,0 +1,191 @@
+        -:    0:Source:workflow.cpp
+        -:    0:Graph:workflow.gcno
+        -:    0:Data:workflow.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <fstream>
+        -:    2:#include <iostream>
+        -:    3:#include <string>
+        -:    4:#include <list>
+        -:    5:#include <vector>
+        -:    6:#include <map>
+        -:    7:#include "workflow.h"
+        -:    8:
+        -:    9://check in student
+        4:   10:void CheckIn(std::map<int, std::string>& floor, Student& stud) {
+       10:   11:	for (auto& now : floor) {
+       10:   12:		if (now.second == "free") {
+        4:   13:			now.second = stud.name + " " + stud.surname + " " + stud.faculty + " " + std::to_string(stud.violations);
+        4:   14:			stud.room = now.first;
+        4:   15:			return;
+        -:   16:		}
+        -:   17:	}
+        -:   18:}
+        2:   19:void GetViolations(Student& stud, std::vector <std::map<int, std::string>>& floors) {
+        2:   20:	++stud.violations;
+        2:   21:	if (stud.violations == 3) {
+    #####:   22:		std::cout << "This student has 3 violations he is evicted from the dormitory" << std::endl;
+    #####:   23:		floors[(stud.room / 10) - 1].erase(stud.room);
+    #####:   24:		stud.room = 0;
+        -:   25:	}
+        -:   26:	else {
+        2:   27:		std::cout << "violations successfully assigned" << std::endl;
+        -:   28:	}
+        2:   29:}
+        -:   30:// students from txt file to list
+    #####:   31:void UpdateList(std::ifstream& fin, std::list<Student>& Students) {
+        -:   32:	//check
+    #####:   33:	if (!fin) {
+    #####:   34:		std::cerr << "Uh oh, SomeText.txt could not be opened for reading!" << std::endl;
+    #####:   35:		exit(1);
+        -:   36:	}
+    #####:   37:	for (Student st; fin >> st; Students.push_back(st)) {
+        -:   38:	}
+    #####:   39:	std::cout << "The list of students has been updated" << std::endl;
+    #####:   40:}
+        -:   41:
+    #####:   42:void PrintData(std::ofstream& fout, std::vector <std::map<int, std::string>>& floors) {
+    #####:   43:	for (auto& now : floors) {
+    #####:   44:		for (auto& now2 : now) {
+    #####:   45:			fout << now2.first << " = " << now2.second << std::endl;
+        -:   46:		}
+    #####:   47:		fout << std::endl;
+        -:   48:	}
+    #####:   49:	fout << std::endl << std::endl;
+    #####:   50:}
+        -:   51:// accommodation of students in rooms
+    #####:   52:void CheckInAll(std::list<Student>& Students, std::vector <std::map<int, std::string>>& floors) {
+    #####:   53:	for (auto& stud : Students) {
+    #####:   54:		if (stud.faculty == "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS") {
+    #####:   55:			stud.floor = 1;
+    #####:   56:			CheckIn(floors[0], stud);
+        -:   57:		}
+    #####:   58:		else if (stud.faculty == "FACULTY_OF_INFOCOMMUNICATIONS") {
+    #####:   59:			stud.floor = 2;
+    #####:   60:			CheckIn(floors[1], stud);
+        -:   61:		}
+    #####:   62:		else if (stud.faculty == "FACULTY_OF_ENGINEERING_AND_ECONOMICS") {
+    #####:   63:			stud.floor = 3;
+    #####:   64:			CheckIn(floors[2], stud);
+        -:   65:		}
+    #####:   66:		else if (stud.faculty == "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS") {
+    #####:   67:			stud.floor = 4;
+    #####:   68:			CheckIn(floors[3], stud);
+        -:   69:		}
+        -:   70:		else {
+    #####:   71:			std::cout << "faculty not found" << std::endl;
+    #####:   72:			exit(1);
+        -:   73:		}
+        -:   74:	}
+    #####:   75:}
+        -:   76:// some set of functions for user 
+    #####:   77:void Options() {
+    #####:   78:	std::cout << "To select an operation, enter a number:" << std::endl;
+    #####:   79:	std::cout << "1: Update the list of students from txt" << std::endl;
+    #####:   80:	std::cout << "2: Move students into the dormitory" << std::endl;
+    #####:   81:	std::cout << "3: Give a violation" << std::endl;
+    #####:   82:	std::cout << "4: Print the list of residents to txt" << std::endl;
+    #####:   83:	std::cout << "5: Add a resident" << std::endl;
+    #####:   84:	std::cout << "6: Delete a resident" << std::endl;
+    #####:   85:}
+        -:   86:
+        4:   87:Student* FindStudent(std::string& name, std::string& surname, std::list<Student>& Students) {
+        6:   88:	for (auto& now : Students) {
+        6:   89:		if (now.name == name && now.surname == surname) {
+        4:   90:			return &now;
+        -:   91:		}
+        -:   92:	}
+    #####:   93:	return nullptr;
+        -:   94:}
+        -:   95:
+    #####:   96:bool Menu(std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students, std::vector <std::map<int, std::string>>& DormitoryFloors) {
+    #####:   97:	Options();
+        -:   98:	int number;
+    #####:   99:	std::cin >> number;
+    #####:  100:	switch (number) {
+    #####:  101:	case 1: {
+    #####:  102:		UpdateList(fin, Students);
+    #####:  103:		break;
+        -:  104:	}
+    #####:  105:	case 2: {
+    #####:  106:		CheckInAll(Students, DormitoryFloors);
+    #####:  107:		break;
+        -:  108:	}
+    #####:  109:	case 3: {
+    #####:  110:		std::string tmp_name, tmp_surname;
+    #####:  111:		std::cout << "enter the student's name" << std::endl;
+    #####:  112:		std::cout << "enter the student's surname" << std::endl;
+    #####:  113:		std::cin >> tmp_name >> tmp_surname;
+    #####:  114:		Student* tmp_stud = FindStudent(tmp_name, tmp_surname, Students);
+    #####:  115:		GetViolations(*tmp_stud, DormitoryFloors);
+    #####:  116:		break;
+        -:  117:	}
+    #####:  118:	case 4: {
+    #####:  119:		PrintData(fout, DormitoryFloors);
+    #####:  120:		break;
+        -:  121:	}
+    #####:  122:	case 5: {
+    #####:  123:		Student stud;
+    #####:  124:		std::cout << "enter the student's name" << std::endl;
+    #####:  125:		std::cout << "enter the student's surname" << std::endl;
+    #####:  126:		std::cout << "enter the student's faculty" << std::endl;
+    #####:  127:		std::cin >> stud.name >> stud.surname >> stud.faculty;
+    #####:  128:		Students.push_back(stud);
+        -:  129:
+    #####:  130:		if (stud.faculty == "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS") {
+    #####:  131:			stud.floor = 1;
+    #####:  132:			CheckIn(DormitoryFloors[0], stud);
+        -:  133:		}
+    #####:  134:		else if (stud.faculty == "FACULTY_OF_INFOCOMMUNICATIONS") {
+    #####:  135:			stud.floor = 2;
+    #####:  136:			CheckIn(DormitoryFloors[1], stud);
+        -:  137:		}
+    #####:  138:		else if (stud.faculty == "FACULTY_OF_ENGINEERING_AND_ECONOMICS") {
+    #####:  139:			stud.floor = 3;
+    #####:  140:			CheckIn(DormitoryFloors[2], stud);
+        -:  141:		}
+    #####:  142:		else if (stud.faculty == "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS") {
+    #####:  143:			stud.floor = 4;
+    #####:  144:			CheckIn(DormitoryFloors[3], stud);
+        -:  145:		}
+        -:  146:		else {
+    #####:  147:			std::cout << "faculty not found" << std::endl;
+    #####:  148:			exit(1);
+        -:  149:		}
+    #####:  150:		break;
+        -:  151:	}
+    #####:  152:	case 6: {
+    #####:  153:		std::string tmp_name, tmp_surname;
+    #####:  154:		std::cout << "enter the student's name" << std::endl;
+    #####:  155:		std::cout << "enter the student's surname" << std::endl;
+    #####:  156:		std::cin >> tmp_name >> tmp_surname;
+    #####:  157:		Student tmp_stud = *FindStudent(tmp_name, tmp_surname, Students);
+    #####:  158:		Students.remove(tmp_stud);
+        -:  159:		/*for (auto now : Students) {
+        -:  160:			if ((now.name = tmp_stud.name)  (now.surname == tmp_stud.surname)) {
+        -:  161:
+        -:  162:			}
+        -:  163:		}*/
+    #####:  164:		if (DormitoryFloors[tmp_stud.floor - 1].count(tmp_stud.room)) {
+    #####:  165:			DormitoryFloors[tmp_stud.floor - 1].erase(tmp_stud.room);
+        -:  166:		}
+        -:  167:		else {
+    #####:  168:			std::cout << "Student not found" << std::endl;
+        -:  169:		}
+    #####:  170:		break;
+        -:  171:	}
+    #####:  172:	default:
+    #####:  173:		printf("Option not selected\n");
+        -:  174:	}
+        -:  175:	int answer;
+    #####:  176:	std::cout << "Would you like to continue?: yes:1 / no:any other number" << std::endl;
+    #####:  177:	std::cin >> answer;
+    #####:  178:	if (answer == 1) {
+    #####:  179:		return 1;
+        -:  180:	}
+        -:  181:	else {
+    #####:  182:		return 0;
+        -:  183:	}
+        -:  184:}
+        -:  185:
+        -:  186:

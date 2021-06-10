@@ -1,0 +1,28 @@
+        -:    0:Source:Student.cpp
+        -:    0:Graph:Student.gcno
+        -:    0:Data:Student.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <fstream>
+        -:    3:#include "Student.h"
+        -:    4:
+        4:    5:Student::Student() : name("noname"), surname("nosurname"), faculty("nofaculty"), room(0), floor(0), violations(0) {}
+        -:    6:
+    #####:    7:std::ostream& operator<< (std::ostream& out, const Student& student) {
+    #####:    8:	out << student.name << " " << student.surname << " " << student.faculty << " floor:" << student.floor << " room:" << student.room << " violations:" << student.violations;
+    #####:    9:	return out;
+        -:   10:}
+        -:   11:
+    #####:   12:std::istream& operator>> (std::istream& in, Student& student) {
+    #####:   13:	in >> student.name;
+    #####:   14:	in >> student.surname;
+    #####:   15:	in >> student.faculty;
+    #####:   16:	return in;
+        -:   17:}
+        -:   18:
+    #####:   19:bool operator== (const Student& stud1, const Student& stud2)
+        -:   20:{
+    #####:   21:	return (stud1.name == stud2.name &&
+    #####:   22:		stud2.surname == stud2.surname);
+        -:   23:}
