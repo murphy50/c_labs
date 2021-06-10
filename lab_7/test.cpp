@@ -67,8 +67,8 @@ int main()
 {
 	std::ofstream fout;
 	std::ifstream fin;
-	fin.open("input.txt");
-	fout.open("Output.txt");
+	fin.open("TestInput.txt");
+	fout.open("TestOutput.txt");
 	std::list<Student> Students;
 	std::vector <std::map<int, std::string>> DormitoryFloors(4);
 	// Initialization rooms
@@ -84,10 +84,9 @@ int main()
 	TesFindStudent(Students);
 	Options();
 	
-	UpdateList(fin,Students);
-	PrintData(DormitoryFloors);
-	CheckInAll(Students,DormitoryFloors);
-	
+	Student student11;
+	fin >> student11;
+	fout << student11;
 	fin.close();
 	fout.close();
 	return 0;
