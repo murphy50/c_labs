@@ -83,9 +83,10 @@ int main()
 	TestGetViolations(DormitoryFloors, Students);
 	TesFindStudent(Students);
 	Options();
-	while (Menu(fin, fout, Students, DormitoryFloors)) {
-	}
-	Student student11;
+	
+	UpdateList(fin,Students);
+	PrintData(DormitoryFloors);
+	CheckInAll(Students,DormitoryFloors);
 	
 	fin.close();
 	fout.close();
