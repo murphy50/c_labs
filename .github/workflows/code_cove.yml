@@ -1,22 +1,28 @@
 name: Codecov
+ 
 on: [push, pull_request]
+
 jobs:
-  run:
+ build:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch
-        uses: actions/checkout@master
-      - uses: actions/checkout@v2
-      - name: Test
-        run: |
-          cd lab_7
-          g++ -ftest-coverage -fprofile-arcs -O0 -o test Student.cpp workflow.cpp
-          ./test
-          gcov -abcfu Student.cpp workflow.cpp
-      - name: Upload
-        uses: codecov/codecov-action@v1
-        with:
-          files: |
-                 ./lab_7/workflow.cpp.gcov
-                 ./lab_7/Student.cpp.gcov
-               
+    
+    - name: Git clone repos
+      uses: actions/checkout@v1
+    
+
+    - name: Test
+      run: |
+        cd lab_7
+        ls -la
+        
+        g++ -ftest-coverage -fprofile-arcs -O0 -o test Student.cpp workflow.cpp
+        ./test
+        gcov -abcfu Student.cpp workflow.cpp
+    - name: Upload
+      uses: codecov/codecov-action@v1
+      with:
+        files: |
+               ./lab_7/workflow.cpp.gcov
+               ./lab_7/Student.cpp.gcov
+
