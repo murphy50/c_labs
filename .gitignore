@@ -1,5 +1,8 @@
-.vscode
+*/.vs
 *.exe
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+*.gcno
+*.gcda
+*.gcov
