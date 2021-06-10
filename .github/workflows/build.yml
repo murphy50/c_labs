@@ -79,7 +79,7 @@ jobs:
        cd lab_7
        ls -la
        g++ -ftest-coverage -fprofile-arcs -O0 -o test test.cpp Student.cpp workflow.cpp
-       ./test
+       ./test 1 1 2 1 4 1 
        gcov -abcfu workflow.cpp Student.cpp 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
