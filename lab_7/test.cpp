@@ -70,7 +70,7 @@ int main()
     std::ifstream test_action;
 	fin.open("TestInput.txt");
 	fout.open("TestOutput.txt");
-    test_action.open("InputActions");
+    test_action.open("InputActions.txt");
 	std::list<Student> Students;
 	std::vector <std::map<int, std::string>> DormitoryFloors(4);
 	// Initialization rooms

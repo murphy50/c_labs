@@ -1,1 +1,1 @@
-Richard Broncks FACULTY_OF_ENGINEERING_AND_ECONOMICS floor:0 room:0 violations:0
+noname nosurname nofaculty floor:0 room:0 violations:0
