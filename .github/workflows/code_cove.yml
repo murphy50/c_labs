@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@master
       - name: Test
         run: |
-          cd ./lab_7
+          cd lab_7
           g++ -ftest-coverage -fprofile-arcs -O0 -o test Student.cpp workflow.cpp
           ./test
           gcov -abcfu Student.cpp workflow.cpp
