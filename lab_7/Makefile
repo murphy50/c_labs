@@ -5,7 +5,7 @@ build:
 build_test: 
 			g++ -o test test.cpp Student.cpp workflow.cpp 
 run_test:
-			./test
+			./test 1 1 2 1 4 1 
 	
 		
 
