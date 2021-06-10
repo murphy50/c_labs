@@ -6,6 +6,7 @@ jobs:
     steps:
       - name: Fetch
         uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Test
         run: |
           cd lab_7
