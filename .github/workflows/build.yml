@@ -17,7 +17,7 @@ jobs:
         sudo apt-get install -y valgrind
         sudo apt install valgrind
         
-    - name: List current folder 
+    - name: make all files 
       run: |
         cd lab_1 
         make
@@ -72,13 +72,20 @@ jobs:
         chmod a+x ./tests
         valgrind  ./main
         valgrind ./tests
-        cd ..
-        cd lab_7
-        make
+    - name: Test
+      run: |
+       
+       ls -la 
+       cd lab_7
+       ls -la
+       g++ -ftest-coverage -fprofile-arcs -O0 -o test test.cpp Student.cpp workflow.cpp
+       ./test
+       gcov -abcfu workflow.cpp Student.cpp 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        files: |
-          ./lab_7/Student.cpp.gcov
-          ./lab_7/workflow.cpp.gcov
+       files: |
+         ./lab_7/Student.cpp.gcov
+         ./lab_7/workflow.cpp.gcov
 
+        
