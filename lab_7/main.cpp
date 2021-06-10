@@ -10,9 +10,10 @@ int main()
 {
 	std::ofstream fout;
 	std::ifstream fin;
+	std::ifstream action;
 	fin.open("input.txt");
 	fout.open("output.txt");
-
+	action.open("InputActions");
 	std::list<Student> Students;
 	std::vector <std::map<int, std::string>> DormitoryFloors(4);
 
@@ -24,8 +25,9 @@ int main()
 		DormitoryFloors[2].insert(room = { i + 30 ,"free" });
 		DormitoryFloors[3].insert(room = { i + 40 ,"free" });
 	}
-	while (Menu(fin, fout, Students, DormitoryFloors)) {
+	while (Menu(action, fin, fout, Students, DormitoryFloors)) {
 	}
+	action.close();
 	fin.close();
 	fout.close();
 	return 0;

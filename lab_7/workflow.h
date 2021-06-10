@@ -16,6 +16,6 @@ void Options();
 
 Student* FindStudent(std::string& name, std::string& surname, std::list<Student>& Students);
 // some set of functions for user 
-bool Menu(std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students, std::vector<std::map<int, std::string>>& DormitoryFloors);
+bool Menu(std::ifstream& action, std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students, std::vector<std::map<int, std::string>>& DormitoryFloors);
 
 #endif

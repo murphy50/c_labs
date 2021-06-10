@@ -67,8 +67,10 @@ int main()
 {
 	std::ofstream fout;
 	std::ifstream fin;
+    std::ifstream test_action;
 	fin.open("TestInput.txt");
 	fout.open("TestOutput.txt");
+    test_action.open("InputActions");
 	std::list<Student> Students;
 	std::vector <std::map<int, std::string>> DormitoryFloors(4);
 	// Initialization rooms
@@ -83,10 +85,13 @@ int main()
 	TestGetViolations(DormitoryFloors, Students);
 	TesFindStudent(Students);
 	Options();
-	
+	while (Menu(test_action, fin, fout, Students, DormitoryFloors)) {
+	}
 	Student student11;
 	fin >> student11;
 	fout << student11;
+    assert(student11 == student11);
+    test_action.close();
 	fin.close();
 	fout.close();
 	return 0;

@@ -93,10 +93,10 @@ Student* FindStudent(std::string& name, std::string& surname, std::list<Student>
 	return nullptr;
 }
 
-bool Menu(std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students, std::vector <std::map<int, std::string>>& DormitoryFloors) {
+bool Menu(std::ifstream& action, std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students, std::vector <std::map<int, std::string>>& DormitoryFloors) {
 	Options();
 	int number;
-	std::cin >> number;
+	action >> number;
 	switch (number) {
 	case 1: {
 		UpdateList(fin, Students);
@@ -108,9 +108,7 @@ bool Menu(std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students,
 	}
 	case 3: {
 		std::string tmp_name, tmp_surname;
-		std::cout << "enter the student's name" << std::endl;
-		std::cout << "enter the student's surname" << std::endl;
-		std::cin >> tmp_name >> tmp_surname;
+		action >> tmp_name >> tmp_surname;
 		Student* tmp_stud = FindStudent(tmp_name, tmp_surname, Students);
 		GetViolations(*tmp_stud, DormitoryFloors);
 		break;
@@ -121,9 +119,6 @@ bool Menu(std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students,
 	}
 	case 5: {
 		Student stud;
-		std::cout << "enter the student's name" << std::endl;
-		std::cout << "enter the student's surname" << std::endl;
-		std::cout << "enter the student's faculty" << std::endl;
 		std::cin >> stud.name >> stud.surname >> stud.faculty;
 		Students.push_back(stud);
 
@@ -151,21 +146,14 @@ bool Menu(std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students,
 	}
 	case 6: {
 		std::string tmp_name, tmp_surname;
-		std::cout << "enter the student's name" << std::endl;
-		std::cout << "enter the student's surname" << std::endl;
 		std::cin >> tmp_name >> tmp_surname;
 		Student tmp_stud = *FindStudent(tmp_name, tmp_surname, Students);
 		Students.remove(tmp_stud);
-		/*for (auto now : Students) {
-			if ((now.name = tmp_stud.name)  (now.surname == tmp_stud.surname)) {
-
-			}
-		}*/
 		if (DormitoryFloors[tmp_stud.floor - 1].count(tmp_stud.room)) {
 			DormitoryFloors[tmp_stud.floor - 1].erase(tmp_stud.room);
 		}
 		else {
-			std::cout << "Student not found" << std::endl;
+			fout << "Student not found" << std::endl;
 		}
 		break;
 	}
@@ -173,8 +161,7 @@ bool Menu(std::ifstream& fin, std::ofstream& fout, std::list<Student>& Students,
 		printf("Option not selected\n");
 	}
 	int answer;
-	std::cout << "Would you like to continue?: yes:1 / no:any other number" << std::endl;
-	std::cin >> answer;
+	action >> answer;
 	if (answer == 1) {
 		return 1;
 	}
