@@ -75,13 +75,10 @@ jobs:
         cd ..
         cd lab_7
         make
-        ls -la 
-        gcov -abcfu test.cpp Student.cpp workflow.cpp
-        ls -la 
-    - name: Upload
+    - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
         files: |
-               ./lab_7/workflow.cpp.gcov
-               ./lab_7/Student.cpp.gcov
+          ./lab_7/Student.cpp.gcov
+          ./lab_7/workflow.cpp.gcov
 
