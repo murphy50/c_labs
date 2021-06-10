@@ -7,72 +7,147 @@
 #include <cassert>
 #include "workflow.h"
 
-void TestGetViolations(std::vector <std::map<int, std::string>>& floors, std::list<Student>& studs) {
-	std::string tmp_name = "Alfonso";
+void TestUpdateList(std::ifstream& fin, std::list<Student>& Students) {
+	assert(UpdateList(fin, Students) == true);
+	std::ifstream error_fin;
+	error_fin.open("wrong.txt");
+	assert(UpdateList(error_fin, Students) == false);
+}
+
+void TestCheckInAll(std::list<Student>& Students, std::vector <std::map<int, std::string>>& floors) {
+	assert(CheckInAll(Students, floors) == true);
+}
+
+void TestGetViolations(std::vector <std::map<int, std::string>>& floors, std::list<Student>& Students) {
+	std::string tmp_name = "Alfonsooo"; 
 	std::string tmp_surname = "Pierce";
-	Student* tmp_stud = FindStudent(tmp_name, tmp_surname, studs);
-	GetViolations(*tmp_stud, floors);
-	assert(tmp_stud->violations == 1);
-	std::string tmp_name2 = "Gianna";
-	std::string tmp_surname2 = "Davis";
-	Student* tmp_stud2 = FindStudent(tmp_name2, tmp_surname2, studs);
-	GetViolations(*tmp_stud2, floors);
-	assert(tmp_stud2->violations == 1);
-	GetViolations(*tmp_stud2, floors);
-	GetViolations(*tmp_stud2, floors);
-	assert(tmp_stud2->violations == 3);
-	assert(tmp_stud == tmp_stud);
+	Student* tmp_stud = FindStudent(tmp_name, tmp_surname, Students);
+	assert(tmp_stud == nullptr);
+    tmp_name = "Alfonso";
+    tmp_stud = FindStudent(tmp_name, tmp_surname, Students);
+	assert(tmp_stud != nullptr);
+	
+	assert(GetViolations(*tmp_stud, floors) == true);
+	assert(GetViolations(*tmp_stud, floors) == true);
+	assert(GetViolations(*tmp_stud, floors) == false);
 }
 
-void TesFindStudent(std::list<Student>& studs) {
-	std::string tmp_name = "Alfonso";
-	std::string tmp_surname = "Pierce";
-	assert(FindStudent(tmp_name, tmp_surname, studs) != nullptr);
-	std::string tmp_name2 = "Gianna";
-	std::string tmp_surname2 = "Davis";
-	assert(FindStudent(tmp_name2, tmp_surname2, studs) != nullptr);
+void TestPrintData(std::ofstream& fout, std::vector <std::map<int, std::string>>& floors) {
+	PrintData(fout, floors);
 }
 
-void TestCheckIn(std::vector <std::map<int, std::string>>& floors, std::list<Student>& studs) {
-	Student st1;
-	st1.name = "Alfonso";
-	st1.surname = "Pierce";
-	st1.faculty = "FACULTY_OF_ENGINEERING_AND_ECONOMICS";
-	CheckIn(floors[2], st1);
-	studs.push_back(st1);
-	Student st2;
-	st2.name = "Gianna";
-	st2.surname = "Davis";
-	st2.faculty = "FACULTY_OF_ENGINEERING_AND_ECONOMICS";
-	CheckIn(floors[2], st2);
-	studs.push_back(st2);
-	Student st3;
-	st3.name = "Johnathon";
-	st3.surname = "Holmes";
-	st3.faculty = "FACULTY_OF_ENGINEERING_AND_ECONOMICS";
-	CheckIn(floors[2], st3);
-	studs.push_back(st3);
-	Student st4;
-	st4.name = "Brian";
-	st4.surname = "Pearson";
-	st4.faculty = "FACULTY_OF_ENGINEERING_AND_ECONOMICS";
-	CheckIn(floors[2], st4);
-	studs.push_back(st4);
-	assert(floors[2].size() == 4);
-
-
+void TestCheckIn(std::vector <std::map<int, std::string>>& floors, std::list<Student>& Students) {
+	Student stud;
+	stud.name = "John";
+	stud.surname = "Johns";
+	stud.faculty = "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS";
+	Students.push_back(stud);
+	for (int i = 0; i < 3; i++) {
+		if (stud.faculty == "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS") {
+			stud.floor = 1;
+			assert(CheckIn(floors[0], stud) == true);
+		}
+		else if (stud.faculty == "FACULTY_OF_INFOCOMMUNICATIONS") {
+			stud.floor = 2;
+			CheckIn(floors[1], stud);
+		}
+		else if (stud.faculty == "FACULTY_OF_ENGINEERING_AND_ECONOMICS") {
+			stud.floor = 3;
+			CheckIn(floors[2], stud);
+		}
+		else if (stud.faculty == "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS") {
+			stud.floor = 4;
+			CheckIn(floors[3], stud);
+		}
+	}
+	Student stud2;
+	stud2.name = "John2";
+	stud2.surname = "Johns2";
+	stud2.faculty = "FACULTY_OF_INFOCOMMUNICATIONS";
+	Students.push_back(stud2);
+	for (int i = 0; i < 3; i++) {
+		if (stud2.faculty == "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS") {
+			stud2.floor = 1;
+			CheckIn(floors[0], stud2);
+		}
+		else if (stud2.faculty == "FACULTY_OF_INFOCOMMUNICATIONS") {
+			stud2.floor = 2;
+			assert(CheckIn(floors[1], stud2) == true);
+		}
+		else if (stud2.faculty == "FACULTY_OF_ENGINEERING_AND_ECONOMICS") {
+			stud2.floor = 3;
+			CheckIn(floors[2], stud2);
+		}
+		else if (stud2.faculty == "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS") {
+			stud2.floor = 4;
+			CheckIn(floors[3], stud2);
+		}
+	}
+	Student stud3;
+	stud3.name = "John3";
+	stud3.surname = "Johns3";
+	stud3.faculty = "FACULTY_OF_ENGINEERING_AND_ECONOMICS";
+	Students.push_back(stud3);
+	for (int i = 0; i < 3; i++) {
+		if (stud3.faculty == "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS") {
+			stud3.floor = 1;
+			CheckIn(floors[0], stud3);
+		}
+		else if (stud3.faculty == "FACULTY_OF_INFOCOMMUNICATIONS") {
+			stud3.floor = 2;
+			CheckIn(floors[1], stud3);
+		}
+		else if (stud3.faculty == "FACULTY_OF_ENGINEERING_AND_ECONOMICS") {
+			stud3.floor = 3;
+			assert(CheckIn(floors[2], stud3) == true);
+		}
+		else if (stud3.faculty == "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS") {
+			stud3.floor = 4;
+			CheckIn(floors[3], stud3);
+		}
+	}
+	Student stud4;
+	stud4.name = "John4";
+	stud4.surname = "Johns4";
+	stud4.faculty = "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS";
+	Students.push_back(stud4);
+	for (int i = 0; i < 3; i++) {
+		if (stud4.faculty == "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS") {
+			stud4.floor = 1;
+			CheckIn(floors[0], stud4);
+		}
+		else if (stud4.faculty == "FACULTY_OF_INFOCOMMUNICATIONS") {
+			stud4.floor = 2;
+			CheckIn(floors[1], stud4);
+		}
+		else if (stud4.faculty == "FACULTY_OF_ENGINEERING_AND_ECONOMICS") {
+			stud4.floor = 3;
+			CheckIn(floors[2], stud4);
+		}
+		else if (stud4.faculty == "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS") {
+			stud4.floor = 4;
+			assert(CheckIn(floors[3], stud4) == true);
+		}
+	}
 }
-
 int main()
 {
 	std::ofstream fout;
 	std::ifstream fin;
-    std::ifstream test_action;
 	fin.open("TestInput.txt");
 	fout.open("TestOutput.txt");
-    test_action.open("InputActions.txt");
+	if (fin.fail()) {
+		std::cout << "error";
+		return 1;
+	}
+	fout.open("output.txt");
+	if (fin.fail()) {
+		std::cout << "error";
+		return 1;
+	}
 	std::list<Student> Students;
 	std::vector <std::map<int, std::string>> DormitoryFloors(4);
+
 	// Initialization rooms
 	for (size_t i = 0; i < DormitoryFloors.size(); ++i) {
 		std::pair<int, std::string> room;
@@ -81,17 +156,19 @@ int main()
 		DormitoryFloors[2].insert(room = { i + 30 ,"free" });
 		DormitoryFloors[3].insert(room = { i + 40 ,"free" });
 	}
-	TestCheckIn(DormitoryFloors, Students);
+	TestUpdateList(fin, Students);
+	TestCheckInAll(Students, DormitoryFloors);
 	TestGetViolations(DormitoryFloors, Students);
-	TesFindStudent(Students);
+	TestPrintData(fout, DormitoryFloors);
+	TestCheckIn(DormitoryFloors, Students);
 	Options();
-	while (Menu(test_action, fin, fout, Students, DormitoryFloors)) {
-	}
+	
+
 	Student student11;
 	fin >> student11;
 	fout << student11;
-    assert(student11 == student11);
-    test_action.close();
+	assert(student11 == student11);
+
 	fin.close();
 	fout.close();
 	return 0;
