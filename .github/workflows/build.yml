@@ -73,5 +73,15 @@ jobs:
         valgrind  ./main
         valgrind ./tests
         cd ..
+        cd lab_7
+        make
+        gcov -abcfu test.cpp Student.cpp workflow.cpp
         
-    
+    - name: Upload
+      uses: codecov/codecov-action@v1
+      with:
+        files: |
+               ./lab_7/workflkow.cpp.gcov
+               ./lab_7/Student.cpp.gcov
+              
+
