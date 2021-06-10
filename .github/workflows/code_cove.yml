@@ -6,9 +6,16 @@ jobs:
     steps:
       - name: Fetch
         uses: actions/checkout@master
+      - name: Test
+        run: |
+          cd ./lab_7
+          g++ -ftest-coverage -fprofile-arcs -O0 -o test Student.cpp workflow.cpp
+          ./test
+          gcov -abcfu Student.cpp workflow.cpp
       - name: Upload
         uses: codecov/codecov-action@v1
-        with: 
+        with:
           files: |
-            ./lab_7/workflkow.cpp.gcov
-            ./lab_7/Student.cpp.gcov
+                 ./lab_7/workflow.cpp.gcov
+                 ./lab_7/Student.cpp.gcov
+               
