@@ -56,33 +56,30 @@ void PrintData(std::ofstream& fout, std::vector <std::map<int, std::string>>& fl
 }
 // accommodation of students in rooms
 bool CheckInAll(std::list<Student>& Students, std::vector <std::map<int, std::string>>& floors) {
+	bool flag = 0;
 	for (auto& stud : Students) {
 		if (stud.faculty == "FACULTY_OF_RADIOENGINEERING_AND_ELECTRONICS") {
 			stud.floor = 1;
 			CheckIn(floors[0], stud);
-			return true;
 		}
 		else if (stud.faculty == "FACULTY_OF_INFOCOMMUNICATIONS") {
 			stud.floor = 2;
 			CheckIn(floors[1], stud);
-			return true;
 		}
 		else if (stud.faculty == "FACULTY_OF_ENGINEERING_AND_ECONOMICS") {
 			stud.floor = 3;
 			CheckIn(floors[2], stud);
-			return true;
 		}
 		else if (stud.faculty == "FACULTY_OF_COMPUTER_SYSTEMS_AND_NETWORKS") {
 			stud.floor = 4;
 			CheckIn(floors[3], stud);
-			return true;
 		}
 		else {
 			std::cout << "faculty not found" << std::endl;
 			return false;
 		}
 	}
-	return false;
+	return true;
 }
 // some set of functions for user 
 void Options() {
