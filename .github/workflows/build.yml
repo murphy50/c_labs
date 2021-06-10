@@ -23,7 +23,8 @@ jobs:
         make
         chmod a+x ./main
         chmod a+x ./tests
-        valgrind  ./main
+        ./main 123 123
+        valgrind  ./main 123 123
         valgrind ./tests
         cd ..
         cd lab_2
