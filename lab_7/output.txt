@@ -1,0 +1,22 @@
+10 = free
+11 = free
+12 = free
+13 = free
+
+20 = free
+21 = free
+22 = free
+23 = free
+
+30 = free
+31 = free
+32 = free
+33 = free
+
+40 = free
+41 = free
+42 = free
+43 = free
+
+
+

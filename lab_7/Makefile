@@ -1,11 +1,13 @@
-all: build build_test run_test
+all: build build_test 
 
 build:
 			g++ -o main main.cpp Student.cpp workflow.cpp
-build_test:
+build_test: 
 			
-			g++ test.cpp Student.cpp workflow.cpp -o test	
-run_test:
-			./test
+			g++ --coverage test.cpp Student.cpp workflow.cpp -o test
+            ./test
+	        gcov workflow.cpp
+            gcov Student.cpp	
+		
 
  
