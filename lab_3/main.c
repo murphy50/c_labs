@@ -13,10 +13,32 @@ int main() {
     }
     // Выделение памяти
     int*** a = (int***)malloc(n * sizeof(int**));
+    if (a == NULL) {
+        printf("Can't allocate memory\n");
+        return 1;
+    }
     for (int i = 0; i < n; i++) {
         a[i] = (int**)malloc(n * sizeof(int*));
+        if (a[i] == NULL) {
+            for (int j = i - 1; j >= 0; j--) {
+                free(a[j]);
+            }
+            free(a);
+            printf("Can't allocate memory\n");
+            return 1;
+        }
         for (int j = 0; j < n; j++) {
             a[i][j] = (int*)malloc(n * sizeof(int));
+            if (a[i][j] == NULL) {
+                for (int f = 0; f < n; f++) {
+                    for (int k = j - 1; k >= 0; k--) {
+                        free(a[f][k]);
+                    }
+                }
+                free(a);
+                printf("Can't allocate memory\n");
+                return 1;
+            }
         }
     }
 
