@@ -18,6 +18,10 @@ void TestGetViolations(std::vector <std::map<int, std::string>>& floors, std::li
 	Student* tmp_stud2 = FindStudent(tmp_name2, tmp_surname2, studs);
 	GetViolations(*tmp_stud2, floors);
 	assert(tmp_stud2->violations == 1);
+	GetViolations(*tmp_stud2, floors);
+	GetViolations(*tmp_stud2, floors);
+	assert(tmp_stud2->violations == 3);
+	assert(tmp_stud == tmp_stud);
 }
 
 void TesFindStudent(std::list<Student>& studs) {
@@ -61,6 +65,10 @@ void TestCheckIn(std::vector <std::map<int, std::string>>& floors, std::list<Stu
 
 int main()
 {
+	std::ofstream fout;
+	std::ifstream fin;
+	fin.open("TestInput.txt");
+	fout.open("TestOutput.txt");
 	std::list<Student> Students;
 	std::vector <std::map<int, std::string>> DormitoryFloors(4);
 	// Initialization rooms
@@ -74,6 +82,10 @@ int main()
 	TestCheckIn(DormitoryFloors, Students);
 	TestGetViolations(DormitoryFloors, Students);
 	TesFindStudent(Students);
+	Options();
+	Menu(fin, fout, Students, DormitoryFloors);
 
+	fin.close();
+	fout.close();
 	return 0;
 }
