@@ -74,9 +74,9 @@ jobs:
         valgrind ./tests
     - name: Test
       run: |
-       cd .. 
+       
        ls -la 
-       cd ./lab_7
+       cd lab_7
        ls -la
        g++ -ftest-coverage -fprofile-arcs -O0 -o test test.cpp Student.cpp workflow.cpp
        ./test
